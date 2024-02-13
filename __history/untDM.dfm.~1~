@@ -1,0 +1,68 @@
+object DM: TDM
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Left = 575
+  Top = 388
+  Height = 259
+  Width = 174
+  object BANCO: TIBDatabase
+    DatabaseName = '127.0.0.1:C:\REPRESS\banco\vendas'
+    Params.Strings = (
+      'user_name=sysdba'
+      'password=masterkey')
+    LoginPrompt = False
+    DefaultTransaction = TRANSACAO
+    IdleTimer = 0
+    SQLDialect = 1
+    TraceFlags = []
+    Left = 16
+    Top = 16
+  end
+  object TRANSACAO: TIBTransaction
+    Active = False
+    DefaultDatabase = BANCO
+    AutoStopAction = saNone
+    Left = 88
+    Top = 16
+  end
+  object TOTAL: TIBDatabase
+    DatabaseName = 'C:\REPRESS\BANCO\RELATORIO'
+    Params.Strings = (
+      'user_name=sysdba'
+      'password=masterkey')
+    LoginPrompt = False
+    DefaultTransaction = TRANSATOTAL
+    IdleTimer = 0
+    SQLDialect = 1
+    TraceFlags = []
+    Left = 16
+    Top = 80
+  end
+  object TRANSATOTAL: TIBTransaction
+    Active = False
+    DefaultDatabase = TOTAL
+    AutoStopAction = saNone
+    Left = 96
+    Top = 80
+  end
+  object VISITAS: TIBDatabase
+    DatabaseName = 'C:\REPRESS\BANCO\VISITAS'
+    Params.Strings = (
+      'user_name=sysdba'
+      'password=masterkey')
+    LoginPrompt = False
+    DefaultTransaction = TRANSAVISITAS
+    IdleTimer = 0
+    SQLDialect = 1
+    TraceFlags = []
+    Left = 16
+    Top = 152
+  end
+  object TRANSAVISITAS: TIBTransaction
+    Active = False
+    DefaultDatabase = VISITAS
+    AutoStopAction = saNone
+    Left = 96
+    Top = 152
+  end
+end
